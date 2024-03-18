@@ -14,20 +14,8 @@ import BookCard from '../cards/BookCard';
 
 function NYTBookRecommendations() {
   const token = Cookies.get('token');
-
-  // Verifying token retrieval
-  useEffect(() => {
-    if (!token) {
-      console.log("Token not retrieved from cookies");
-    } else {
-      console.log("Token retrieved successfully:", token);
-    }
-  }, [token]);
-
-
   const [nytRecData, setNytRecData] = useState([]);
   const lists = ['combined-print-and-e-book-fiction', 'combined-print-and-e-book-nonfiction'];
-  const [loading, setLoading] = useState(true); // State to track loading status
   const listDisplayNames = ["Current New York Time's Bestseller's List for Fiction", "Current New York Time's Bestseller's List for Nonfiction"];
   const [responseCode, response, callGetNYTBookRecommendationsEndpoint] = (
     useEndpoint([], () => (
@@ -37,31 +25,22 @@ function NYTBookRecommendations() {
     callGetNYTBookRecommendationsEndpoint();
   }, []);
 
-  // Inside the useEffect where you filter the response data
-useEffect(() => {
-  console.log("Response:", response);
-  if (responseCode !== 0 && responseCode !== 401 && response && response.length > 0) {
-    const filteredData = response.filter((rec) => lists.includes(rec.list_name_encoded));
-    console.log("Filtered Data:", filteredData);
-    setNytRecData([...filteredData]);
-    setLoading(false); // Data loaded, set loading to false
-  }
-}, [responseCode, response]);
-
-
-  /*
   useEffect(() => {
+    console.log("API Response:", response);
     if (responseCode !== 0 && responseCode !== 401 && response && response.length > 0) {
-      setNytRecData([...response.filter((rec) => lists.includes(rec.list_name_encoded))]);
-      setLoading(false); // Data loaded, set loading to false
+      //setNytRecData([...response.filter((rec) => lists.includes(rec.list_name_encoded))]);
+      const filteredData = response.filter((rec) => lists.includes(rec.list_name_encoded));
+      console.log("Filtered Data:", filteredData);
+      setNytRecData(filteredData);
     }
   }, [responseCode, response]);
-  */
 
-  if (loading) {
-    return <CircularProgress sx={{ margin: '0 auto' }} />;
-  }
+  useEffect(() => {
+    console.log("Filtered Results:", nytRecData);
+  }, [nytRecData]);
 
+  
+  
   const carousels = lists.map((list, index) => {
     const listData = nytRecData.find((rec) => rec.list_name_encoded === list);
     const books = listData ? listData.books : [];
