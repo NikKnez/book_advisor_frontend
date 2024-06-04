@@ -30,13 +30,12 @@ function Books() {
   // Verifying token retrieval
   useEffect(() => {
     if (!token) {
-      console.log("Token not retrieved from cookies");
+      console.log('Token not retrieved from cookies');
     } else {
-      console.log("Token retrieved successfully:", token);
+      console.log('Token retrieved successfully:', token);
     }
   }, [token]);
 
-  
   const [recData, setRecData] = useState([]);
   const [responseCode, response, callGetRecsEndpoint] = (
     useEndpoint([], () => (

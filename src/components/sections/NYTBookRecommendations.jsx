@@ -26,21 +26,19 @@ function NYTBookRecommendations() {
   }, []);
 
   useEffect(() => {
-    console.log("API Response:", response);
+    console.log('API Response:', response);
     if (responseCode !== 0 && responseCode !== 401 && response && response.length > 0) {
-      //setNytRecData([...response.filter((rec) => lists.includes(rec.list_name_encoded))]);
+      // setNytRecData([...response.filter((rec) => lists.includes(rec.list_name_encoded))]);
       const filteredData = response.filter((rec) => lists.includes(rec.list_name_encoded));
-      console.log("Filtered Data:", filteredData);
+      console.log('Filtered Data:', filteredData);
       setNytRecData(filteredData);
     }
   }, [responseCode, response]);
 
   useEffect(() => {
-    console.log("Filtered Results:", nytRecData);
+    console.log('Filtered Results:', nytRecData);
   }, [nytRecData]);
 
-  
-  
   const carousels = lists.map((list, index) => {
     const listData = nytRecData.find((rec) => rec.list_name_encoded === list);
     const books = listData ? listData.books : [];
