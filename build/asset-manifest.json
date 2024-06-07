@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.6662efd1.js",
+    "static/media/bookshelf.jpg": "/static/media/bookshelf.445fa6037ed0d52f4397.jpg",
+    "static/media/nyt-icon.svg": "/static/media/nyt-icon.7d8f9d10d6c7adc409e4f8ce2382f8e3.svg",
+    "index.html": "/index.html",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.6662efd1.js.map": "/static/js/main.6662efd1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.6662efd1.js"
+  ]
+}
