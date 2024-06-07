@@ -2,5 +2,5 @@
 // mostly copied from https://stackoverflow.com/a/61797794
 
 export default function fetchEndpoint(url, ...params) {
-  return fetch(`${'https://bookadvisor-m4pm.onrender.com'}${url}`, ...params);
+  return fetch(`${process.env.REACT_APP_API_ENDPOINT}${url}`, ...params);
 }
