@@ -72,7 +72,7 @@ function Profile() {
       setRecentlyAdded(profileResponse.recently_added ? profileResponse.recently_added : []);
       setReadGoalData(profileResponse.reading_goal);
       setIsModerator(profileResponse.moderator);
-      document.title = `${profileResponse.first_name} ${profileResponse.last_name} - BookRec`;
+      document.title = `${profileResponse.first_name} ${profileResponse.last_name} - Book Advisor`;
     } else if (profileResponseCode === 400 && profileResponse.message === 'Invalid token') {
       navigate('/logout-invalid');
     } else if (profileResponseCode === 400) {
